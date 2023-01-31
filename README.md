@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/tomatophp/laravel-agora/blob/master/art/art/screenshot.png)
+![Screenshot](https://github.com/tomatophp/laravel-agora/blob/master/art/screenshot.png)
 
 # Laravel Agora
 
