@@ -1,4 +1,4 @@
-![Screenshot](./art/screenshot.png)
+![Screenshot](https://github.com/tomatophp/laravel-agora/blob/master/art/art/screenshot.png)
 
 # Laravel Agora
 
@@ -14,7 +14,7 @@ publish config file
 
 ```bash
 php artisan vendor:publish --tag="laravel-agora-config"
-```
+``` 
 
 go to your env and add you can find it from [Project Management](https://console.agora.io/)
 
