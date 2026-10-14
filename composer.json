@@ -34,5 +34,8 @@
     "require": {
         "php": "^8.0.2",
         "tomatophp/console-helpers": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0"
     }
 }
