@@ -30,6 +30,10 @@ class Agora
      * @var bool
      */
     protected bool $join = false;
+    /**
+     * @var int|null
+     */
+    protected int|null $expireIn = null;
 
     /**
      * @param string|int $id
@@ -91,6 +95,31 @@ class Agora
     }
 
     /**
+     * Set how long (in seconds) the generated token stays valid.
+     * Defaults to the `laravel-agora.agora.expire` config value (3600 seconds).
+     *
+     * @param int $seconds
+     * @return $this
+     */
+    public function expireIn(int $seconds): static
+    {
+        if ($seconds < 1) {
+            throw new \InvalidArgumentException('Agora token expiry must be at least 1 second.');
+        }
+
+        $this->expireIn = $seconds;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getExpireIn(): int
+    {
+        return $this->expireIn ?? max(1, (int) config('laravel-agora.agora.expire', 3600));
+    }
+
+    /**
      * @return string|void|null
      */
     public function token()
@@ -107,7 +136,7 @@ class Agora
             }
 
             //Build a Time
-            $expireTimeInSeconds = 3600;
+            $expireTimeInSeconds = $this->getExpireIn();
             $currentTimestamp = now()->getTimestamp();
             $privilegeExpiredTs = $currentTimestamp + $expireTimeInSeconds;
 
